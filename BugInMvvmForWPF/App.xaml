@@ -1,0 +1,13 @@
+﻿<Application x:Class="BugInMvvmForWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BugInMvvmForWPF"
+             StartupUri="MainWindow.xaml"
+             xmlns:vm="clr-namespace:BugInMvvmForWPF.Lib.ViewModels;assembly=BugInMvvmForWPF.Lib"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
