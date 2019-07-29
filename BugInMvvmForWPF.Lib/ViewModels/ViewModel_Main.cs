@@ -1,13 +1,14 @@
 ﻿using BugInMvvmForWPF.Lib.Models;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BugInMvvmForWPF.Lib.ViewModels
 {
-    public class ViewModel_Main : ViewModelBase
+    public class ViewModel_Main : INotifyPropertyChanged
     {
         #region events
 
@@ -33,15 +34,20 @@ namespace BugInMvvmForWPF.Lib.ViewModels
 
             // used only in UWP & WPF
             // or anything that supports design time updates
-            if (base.IsInDesignMode)
-            {
-                DesignData();
-            }
-            else
-            {
-                RuntimeData();
-            }
+            //if (base.IsInDesignMode)
+            //{
+            //    DesignData();
+            //}
+            //else
+            //{
+            //    RuntimeData();
+            //} 
+
+            // temporarily use DESIGN DATA for Designer and Runtime
+            DesignData();
         }
+
+
         #endregion
 
         #region command methods
@@ -80,6 +86,12 @@ namespace BugInMvvmForWPF.Lib.ViewModels
                 FirstName = "DESIGN_Cy",
                 LastName = "Loleng"
             });
+
+            this.PersonCollection.Add(new Model_Person()
+            {
+                FirstName = "DESIGN_Emelda",
+                LastName = "Crosma"
+            });
         }
 
         void RuntimeData()
@@ -106,6 +118,14 @@ namespace BugInMvvmForWPF.Lib.ViewModels
         public async Task RefreshData()
         {
 
+        }
+        #endregion
+
+        #region INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }
