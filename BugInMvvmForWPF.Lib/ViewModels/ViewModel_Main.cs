@@ -33,14 +33,16 @@ namespace BugInMvvmForWPF.Lib.ViewModels
 
             // used only in UWP & WPF
             // or anything that supports design time updates
-            if (base.IsInDesignMode)
-            {
-                DesignData();
-            }
-            else
-            {
-                RuntimeData();
-            }
+            //if (base.IsInDesignMode)
+            //{
+            //    DesignData();
+            //}
+            //else
+            //{
+            //    RuntimeData();
+            //}
+
+            DesignData();
         }
         #endregion
 
