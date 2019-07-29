@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace BugInMvvmForWPF.Lib.Helpers
+﻿namespace GalaSoft.MvvmLight.Helpers
 {
-    public enum DesignerPlatformLibrary
-    {
-        Unknown,
-        Net,
-        WinRt,
-        Silverlight
-    }
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
 
     public class DesignerLibrary
     {
+        internal enum DesignerPlatformLibrary
+        {
+            Unknown,
+            Net,
+            WinRt,
+            Silverlight
+        }
+
         private static DesignerPlatformLibrary? _detectedDesignerPlatformLibrary;
 
         private static bool? _isInDesignMode;
@@ -211,5 +209,4 @@ namespace BugInMvvmForWPF.Lib.Helpers
             }
         }
     }
-
 }

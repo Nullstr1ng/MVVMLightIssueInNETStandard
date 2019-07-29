@@ -1,10 +1,8 @@
-﻿using BugInMvvmForWPF.Lib.Helpers;
-using BugInMvvmForWPF.Lib.Models;
+﻿using BugInMvvmForWPF.Lib.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
+using GalaSoft.MvvmLight.Helpers;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
