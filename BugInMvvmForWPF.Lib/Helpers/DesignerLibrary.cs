@@ -58,6 +58,8 @@ namespace BugInMvvmForWPF.Lib.Helpers
                 ret = DesignerPlatformLibrary.WinRt;
             }
 
+            // for WOF
+            // this prevents the designer to ignore design time datas
             try
             {
                 if (!(Type.GetType("System.ComponentModel.DesignerProperties, System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e") is null))
