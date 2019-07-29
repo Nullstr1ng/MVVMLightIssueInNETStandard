@@ -1,7 +1,10 @@
-﻿using BugInMvvmForWPF.Lib.Models;
+﻿using BugInMvvmForWPF.Lib.Helpers;
+using BugInMvvmForWPF.Lib.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -31,9 +34,13 @@ namespace BugInMvvmForWPF.Lib.ViewModels
         {
             InitCommands();
 
+#if WPF
+            Debug.WriteLine("WPF!");
+#endif
+
             // used only in UWP & WPF
             // or anything that supports design time updates
-            if (base.IsInDesignMode)
+            if (DesignerLibrary.IsInDesignMode)
             {
                 DesignData();
             }
@@ -42,9 +49,9 @@ namespace BugInMvvmForWPF.Lib.ViewModels
                 RuntimeData();
             }
         }
-        #endregion
+#endregion
 
-        #region command methods
+#region command methods
         void Command_Add_Click()
         {
             this.PersonCollection.Add(new Model_Person()
@@ -53,9 +60,9 @@ namespace BugInMvvmForWPF.Lib.ViewModels
                 LastName = "Person's lastname"
             });
         }
-        #endregion
+#endregion
 
-        #region methods
+#region methods
         void InitCommands()
         {
             if (Command_Add == null) Command_Add = new RelayCommand(Command_Add_Click);
@@ -107,6 +114,7 @@ namespace BugInMvvmForWPF.Lib.ViewModels
         {
 
         }
+
         #endregion
     }
 }
